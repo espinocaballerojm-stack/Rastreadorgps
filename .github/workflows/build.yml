@@ -28,8 +28,11 @@ jobs:
           unzip -q g.zip
           echo "$PWD/gradle-8.7/bin" >> "$GITHUB_PATH"
 
+      - name: Activar AndroidX
+        run: echo "android.useAndroidX=true" >> gradle.properties
+
       - name: Compilar APK
-        run: gradle assembleDebug --no-daemon --stacktrace
+        run: gradle assembleDebug --no-daemon
 
       - name: Publicar APK para descargar
         run: |
